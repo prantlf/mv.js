@@ -1,0 +1,80 @@
+#!/bin/sh
+
+SCRIPT=$(readlink -f "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+
+cd "$SCRIPTPATH"
+
+echo "mv -h"
+../bin/mv.js -h
+if [ "$?" != "0" ]; then exit 1; fi
+
+echo "mv -V"
+../bin/mv.js -V
+if [ "$?" != "0" ]; then exit 1; fi
+
+echo "mv"
+../bin/mv.js
+if [ "$?" != "1" ]; then exit 1; fi
+
+echo "mv -z"
+../bin/mv.js -z
+if [ "$?" != "1" ]; then exit 1; fi
+
+rm -rf in out
+mkdir in
+
+echo "mv -- in/file out"
+touch in/file
+../bin/mv.js -- in/file out
+if [ "$?" != "0" ]; then exit 1; fi
+if [ ! -f "out" ]; then exit 1; fi
+
+echo "mv -n in/file out"
+touch in/file
+../bin/mv.js -n in/file out
+if [ "$?" != "1" ]; then exit 1; fi
+
+chmod a-w out
+
+echo "mv in/file out"
+touch in/file
+../bin/mv.js in/file out
+if [ "$?" != "1" ]; then exit 1; fi
+
+echo "mv --clobbering in/file out"
+touch in/file
+../bin/mv.js --clobbering in/file out
+if [ "$?" != "1" ]; then exit 1; fi
+
+echo "mv -fv in/file out"
+touch in/file
+../bin/mv.js -fv in/file out
+if [ "$?" != "0" ]; then exit 1; fi
+
+chmod u+w out
+rm out
+mkdir out
+
+echo "mv -D in/file out"
+../bin/mv.js -D in/file out
+if [ "$?" != "0" ]; then exit 1; fi
+if [ -f "out/file" ]; then exit 1; fi
+
+echo "mv in/file out"
+touch in/file
+../bin/mv.js in/file out
+if [ "$?" != "0" ]; then exit 1; fi
+if [ ! -f "out/file" ]; then exit 1; fi
+
+rm -r out
+mkdir out
+
+echo "mv -cv in '*' out"
+touch in/file
+../bin/mv.js -cv in '*' out
+if [ "$?" != "0" ]; then exit 1; fi
+echo "checking out/file"
+if [ ! -f "out/file" ]; then exit 1; fi
+
+echo "done"
