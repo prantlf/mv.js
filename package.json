@@ -1,7 +1,7 @@
 {
   "name": "@unixcompat/mv.js",
   "description": "Moves or renames files or directories like the \"mv\" command.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/prantlf/mv.js#readme",
   "author": {
     "name": "Ferdinand Prantl",
