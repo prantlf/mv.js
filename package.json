@@ -27,7 +27,7 @@
   },
   "type": "module",
   "bin": {
-    "mv.js": "bin/mv.js"
+    "mv.js": "bin/mv.mjs"
   },
   "files": [
     "bin"

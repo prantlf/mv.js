@@ -6,19 +6,19 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 cd "$SCRIPTPATH"
 
 echo "mv -h"
-../bin/mv.js -h
+../bin/mv.mjs -h
 if [ "$?" != "0" ]; then exit 1; fi
 
 echo "mv -V"
-../bin/mv.js -V
+../bin/mv.mjs -V
 if [ "$?" != "0" ]; then exit 1; fi
 
 echo "mv"
-../bin/mv.js
+../bin/mv.mjs
 if [ "$?" != "1" ]; then exit 1; fi
 
 echo "mv -z"
-../bin/mv.js -z
+../bin/mv.mjs -z
 if [ "$?" != "1" ]; then exit 1; fi
 
 rm -rf in out
@@ -26,30 +26,30 @@ mkdir in
 
 echo "mv -- in/file out"
 touch in/file
-../bin/mv.js -- in/file out
+../bin/mv.mjs -- in/file out
 if [ "$?" != "0" ]; then exit 1; fi
 if [ ! -f "out" ]; then exit 1; fi
 
 echo "mv -n in/file out"
 touch in/file
-../bin/mv.js -n in/file out
+../bin/mv.mjs -n in/file out
 if [ "$?" != "1" ]; then exit 1; fi
 
 chmod a-w out
 
 echo "mv in/file out"
 touch in/file
-../bin/mv.js in/file out
+../bin/mv.mjs in/file out
 if [ "$?" != "1" ]; then exit 1; fi
 
 echo "mv --clobbering in/file out"
 touch in/file
-../bin/mv.js --clobbering in/file out
+../bin/mv.mjs --clobbering in/file out
 if [ "$?" != "1" ]; then exit 1; fi
 
 echo "mv -fv in/file out"
 touch in/file
-../bin/mv.js -fv in/file out
+../bin/mv.mjs -fv in/file out
 if [ "$?" != "0" ]; then exit 1; fi
 
 chmod u+w out
@@ -57,13 +57,13 @@ rm out
 mkdir out
 
 echo "mv -D in/file out"
-../bin/mv.js -D in/file out
+../bin/mv.mjs -D in/file out
 if [ "$?" != "0" ]; then exit 1; fi
 if [ -f "out/file" ]; then exit 1; fi
 
 echo "mv in/file out"
 touch in/file
-../bin/mv.js in/file out
+../bin/mv.mjs in/file out
 if [ "$?" != "0" ]; then exit 1; fi
 if [ ! -f "out/file" ]; then exit 1; fi
 
@@ -72,7 +72,7 @@ mkdir out
 
 echo "mv -cv in '*' out"
 touch in/file
-../bin/mv.js -cv in '*' out
+../bin/mv.mjs -cv in '*' out
 if [ "$?" != "0" ]; then exit 1; fi
 echo "checking out/file"
 if [ ! -f "out/file" ]; then exit 1; fi
