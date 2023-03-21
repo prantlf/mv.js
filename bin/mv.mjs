@@ -13,7 +13,7 @@ function getPackage() {
 function help() {
   console.log(`${getPackage().description}
 
-Usage: mv.js [-Dfnv] [--] src... dest
+Usage: mv-j [-Dfnv] [--] src... dest
 
 Options:
   -c|--cwd <dir>              directory to start looking for the source files
@@ -25,8 +25,8 @@ Options:
   -h|--help                   print usage instructions
 
 Examples:
-  $ mv.js prog.js prog.bak
-  $ mv.js jones smith /home/nick/clients`)
+  $ mv-j prog.js prog.bak
+  $ mv-j jones smith /home/nick/clients`)
 }
 
 const { argv } = process
