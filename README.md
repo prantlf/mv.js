@@ -9,7 +9,7 @@ Moves or renames files or directories like the `mv` command.
 
 There are multi-platform file-system commands compatible with `mv` from UN*X implemented for Node.js in JavaScript, like [renamer], but they have different interface and different behaviour than the `mv` command. Instead of reusing the knowledge of the `mv` command, you would have to learn their new interface. This project aims to provide the well-known interface of the `mv` command.
 
-This package offers only command-line interface, because programmatic interface is provided by [`rename`] from [node:fs]. See also other commands compatible with their counterparts from UN*X - [cat.js], [cp.js], [mkdir.js] and [rm.js].
+This package offers only command-line interface, because programmatic interface is provided by [`rename`] from [node:fs]. See also other commands compatible with their counterparts from UN*X - [cat.js], [cp.js], [ln.js], [mkdir.js] and [rm.js].
 
 ## Synopsis
 
@@ -112,10 +112,11 @@ Licensed under the MIT license.
 [PNPM]: https://pnpm.io/
 [Yarn]: https://yarnpkg.com/
 [renamer]: https://www.npmjs.com/package/renamer
+[cat.js]: https://www.npmjs.com/package/@unixcompat/cat.js
 [cp.js]: https://www.npmjs.com/package/@unixcompat/cp.js
+[ln.js]: https://www.npmjs.com/package/@unixcompat/ln.js
 [mkdir.js]: https://www.npmjs.com/package/@unixcompat/mkdir.js
 [rm.js]: https://www.npmjs.com/package/@unixcompat/rm.js
-[cat.js]: https://www.npmjs.com/package/@unixcompat/cat.js
 [POSIX documentation]: https://man7.org/linux/man-pages/man1/mv.1p.html
 [Linux implementation]: https://man7.org/linux/man-pages/man1/mv.1.html
 [`rename`]: https://nodejs.org/api/fs.html#fscpsrc-dest-options-callback
